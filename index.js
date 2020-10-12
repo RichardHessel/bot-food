@@ -101,7 +101,7 @@ app.get("/chatbot/find", urlencodedParser, function (req, res) {
 
   if(req.query.input) objJSON.input = req.query.input; else objJSON.input = '';
   if (req.body.output) objJSON.output = req.body.output;
-
+   questionData();
   findData(objJSON, function (result) {
     res.send(result);
   });
@@ -133,7 +133,7 @@ const findData = function (objJSON, callback) {
 
 
 
-const questionData = function (objJSON, callback) {
+function questionData (objJSON, callback) {
   try {
     const collection = db.collection("chatbot");
     collection.find(objJSON).toArray(function (err, result) {
