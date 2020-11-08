@@ -1,5 +1,5 @@
 {
-  "name": "padabot",
+  "name": "botFood",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThaynaraCR/PadaBot.git"
+    "url": "git+https://github.com/ThaynaraCR/botFood.git"
   },
   "bugs": {
-    "url": "https://github.com/ThaynaraCR/PadaBot/issues"
+    "url": "https://github.com/ThaynaraCR/botFood/issues"
   },
-  "homepage": "https://github.com/ThaynaraCR/PadaBot#readme",
+  "homepage": "https://github.com/ThaynaraCR/botFood#readme",
   "description": ""
 }

@@ -5,7 +5,7 @@ const assert = require('assert');
 const bodyParser = require('body-parser');
 
 let db = null;
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://joao:123@localhost:27017?authSource=chatbotdb';
 const dbName = 'chatbotdb';
 
 const jsonParser = bodyParser.json();
@@ -16,7 +16,7 @@ app.use(urlencodedParser);
 
 MongoClient.connect(
   url,
-  { useUnifiedTopology: true, useNewUrlParser: true},
+  { useUnifiedTopology: true, useNewUrlParser: true, },
   function (err, client) {
     assert.equal(null, err);
     console.log("bd conectado...");
@@ -28,14 +28,14 @@ app.listen(3000);
 console.log('servidor rodando em: localhost:3000');
 
 
-app.post("/documents/find", urlencodedParser, function (req, res) {
+app.get("/documents/find", urlencodedParser, function (req, res) {
   try{
   let objJSON = {};
-  if (req.body.code_user) objJSON.code_user = Number(req.body.code_user);
-  else objJSON.code_user= -1;
-  if (req.body.activate) objJSON.activate = Number(req.body.activate);
-  else objJSON.activate = 1;
-
+  // if (req.body.code_user) objJSON.code_user = Number(req.body.code_user);
+  // else objJSON.code_user= -1;
+  // if (req.body.activate) objJSON.activate = Number(req.body.activate);
+  // else objJSON.activate = 1;
+  // console.log(objJSON);
   findDocuments(objJSON, function (result) {
     res.send(result);
   });
@@ -97,14 +97,27 @@ app.get("/index", urlencodedParser, function (req, res) {
 
 app.get("/chatbot/find", urlencodedParser, function (req, res) {
   try{
+  console.log('request received');
   let objJSON = {};
 
   if(req.query.input) objJSON.input = req.query.input; else objJSON.input = '';
   if (req.body.output) objJSON.output = req.body.output;
-   questionData();
-  findData(objJSON, function (result) {
-    res.send(result);
-  });
+  
+  questionData(objJSON, function(result) {
+      if(result.length > 1) {
+        const resultNlp = nlp(req.query.input, result);
+        
+        res.send(resultNlp);
+
+      }
+      else {
+        res.send(result);
+      }
+
+   });
+  // findData(objJSON, function (result) {
+  //   res.send(result);
+  // });
     }catch(e){
       
       console.log({error: 'erro de requisição 21'});
@@ -135,13 +148,16 @@ const findData = function (objJSON, callback) {
 
 function questionData (objJSON, callback) {
   try {
+    console.log(objJSON);
     const collection = db.collection("chatbot");
     collection.find(objJSON).toArray(function (err, result) {
       assert.equal(null, err);
       if (result.length <= 0) {
         let objFind = {};
+
         collection.find(objFind).toArray(function (err, result) {
           assert.equal(null, err);
+          callback(result);
         });
       } else callback(result);
     });
@@ -312,9 +328,9 @@ let originalQuestion = question.toString().trim();
             return true;
           } else return false;
         } catch (e) {
-          return false;
-          
           console.log({ error: "erro de requisição 1" });
+
+          return false;
         }
       };
 

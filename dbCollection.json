@@ -2,44 +2,44 @@
   "_id": {
     "$oid": "5f8388389c432a20a4229c48"
   },
-  "input": "oi?",
-  "output": "Olá, eu sou o Padabot, assistente virtual da Padaria Melhor Pão! Estou aqui para melhor atendê-lo, evitando que você enfrente filas no periodo de quarentena retirando seu pedido apenas com o comprovante de pagamento! Para começar seu pedido informe o produto que deseja temos Pão Francês, Pão doce, Frios, Refrigerante e Leite"
+  "input": "Olá",
+  "output": "Olá, eu sou o botFood! O que deseja? Você pode escolher uma das opções: [Frango grelhado] [Alcatra] [Macarrao] [Parmegiana] [Refrigerante]"
 },{
   "_id": {
     "$oid": "5f839a2ccf8625234cc417d1"
   },
-  "input": "Pão Frances",
-  "output": "ok, Pão francês! o valor é 15 centavos a unidade quantos você deseja?"
+  "input": "Frango grelhado",
+  "output": "ok, Frango grelhado! o valor é R$ 15,00. Quantos você deseja?"
 },{
   "_id": {
     "$oid": "5f83b413a8c8883930e9d664"
   },
-  "input": "Pão Doce",
-  "output": "ok, Pão Doce! o valor é 80 centavos a unidade quantos você deseja?"
+  "input": "Alcatra",
+  "output": "ok, Alcatra! o valor é R$ 20,00. Quantos você deseja?"
 },{
   "_id": {
     "$oid": "5f83b424a8c8883930e9d665"
   },
-  "input": "Frios",
-  "output": "ok, Frios! o valor é 2 reais 100 gramas, quanto você deseja?"
+  "input": "Macarrao",
+  "output": "ok, Macarrão! o valor é R$ 18,00. Quantos você deseja?"
 },{
   "_id": {
     "$oid": "5f83b427a8c8883930e9d666"
   },
-  "input": "Leite",
-  "output": "ok, Leite! o valor é 4 reais  unidade de 1 litro quantas unidades você deseja?"
+  "input": "Parmegiana",
+  "output": "ok, Parmegiana! o valor é R$ 30,00. Quantos você deseja?"
 },{
   "_id": {
     "$oid": "5f83b42ba8c8883930e9d667"
   },
   "input": "Refrigerante",
-  "output": "ok, Refrigerante! o valor é 10 reais Coca cola 8 reais se for Fanta e 5 reais o Dolly qual você deseja?"
+  "output": "ok, Refrigerante! Escolha uma das opções: [coca cola]: R$ 10,00. [fanta]: R$ 8,00. [dolly]: R$ 5,00."
 },{
   "_id": {
     "$oid": "5f83b51ba8c8883930e9d668"
   },
   "input": "Dolly",
-  "output": "ok, Dolly! quantas unidades voce deseja?  Obs: Para essa forma de pedido você pode solicitar até 3 unidades."
+  "output": "ok, Dolly! quantas unidades voce deseja [limitado a 3 un.]?"
 },{
   "_id": {
     "$oid": "5f83b5fea8c8883930e9d669"
